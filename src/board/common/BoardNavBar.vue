@@ -3,23 +3,23 @@
   <v-list rounded="lg">
     <v-list-item
         link
-        @click ="$emit('select-board', 'board1')"
+        @click="goList(1)"
     >학과게시판</v-list-item>
 
     <v-list-item
         link
-        @click ="$emit('select-board', 'board2')"
+         @click="goList(2)"
         >
     학교소식</v-list-item>
 
     <v-list-item
         link
-        @click ="$emit('select-board', 'board3')"
+         @click="goList(3)"
     >학과 소식</v-list-item>
 
     <v-list-item
         link
-        @click ="$emit('select-board', 'board4')"
+         @click="goList(4)"
     >축하해주세요</v-list-item>
     <v-divider class="my-2"></v-divider>
 
@@ -30,3 +30,18 @@
     ></v-list-item>
     </v-list>
 </template>
+
+<script setup>
+import {useRouter} from "vue-router";
+const router = useRouter();
+
+function goList(boardId){
+    router.push(`/board/${boardId}/list`);
+}
+
+
+// function goWrite(boardId){
+//     router.push(`/board/${boardId}/write`);
+// }
+
+</script>

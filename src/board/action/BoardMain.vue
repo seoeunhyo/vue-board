@@ -2,21 +2,53 @@
   <div>
     <div v-if="!boardId">게시판을 선택하세요.</div>
       <ul v-else>
-        <!-- <li v-for="post in posts" :key="post.id">{{ post.title }}</li> -->
         <h2>{{ boardId }}</h2>
       </ul>
   </div>
+
+  <v-card
+    class="mx-auto"
+    max-width="1000"
+  >
+    <v-list :items="items"></v-list>
+  </v-card>
+  <v-row justify="end">
+    <v-btn 
+      color="primary" class="mt-4"
+      :to="{name:'BoardWrite', params:{boardId: boardId}}"
+    >글쓰기</v-btn>
+  </v-row>
 </template>
 
-<script >
+<script>
+
 export default {
-  props: ['boardId'],
+  props: ["boardId"],
     created() {
     console.log('받은 boardId:', this.boardId)
   },
   data() {
     return {
       posts: [],
+      items: [
+    {
+      title: 'Item #1',
+      value: 1,
+    },
+    {
+      title: 'Item #2',
+      value: 2,
+    },
+    {
+      title: 'Item #3',
+      value: 3,
+    },
+    {
+      title: 'Item #4',
+      value: 4,
+    },
+  ]
+
     }
   },
   watch: {
@@ -34,7 +66,7 @@ export default {
   methods: {
     async fetchPosts(boardId) {
   try {
-    const response = await fetch(`https://your-api-url/posts?boardId=${boardId}`)
+    const response = await fetch(`https://localhost:3000/board/${boardId}list`)
     if (!response.ok) throw new Error('네트워크 에러')
     const data = await response.json()
     this.posts = data

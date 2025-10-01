@@ -45,15 +45,10 @@
             <v-sheet
               min-height="70vh"
               rounded="lg"
-            >
-            <BoardMain :boardId = "selectedBoardId"></BoardMain>
-            
+            > 
+              <router-view />
               <!--  -->
             </v-sheet>
-               <router-view />
-              <v-row justify="end">
-                <v-btn color="primary" class="mt-4">글쓰기</v-btn>
-              </v-row>
           </v-col>
         </v-row>
       </v-container>
@@ -63,11 +58,10 @@
 
 <script >
 import BoardNavBar from '@/board/common/BoardNavBar.vue';
-import BoardMain from '@/board/common/BoardMain.vue';
 
 
   export default {
-    components: {BoardNavBar, BoardMain},
+    components: {BoardNavBar},
 
     data () {
       return {
