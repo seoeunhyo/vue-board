@@ -1,15 +1,15 @@
 const express = require('express')
 const cors = require('cors')
-const db = require('./src/back/db.js')
+const db = require('./db.js')
 const app = express()
 const port = 3000;
 const path = require('path');
 const { writer } = require('repl');
 
 // Vue 정적파일 서빙 (경로 주의!)
-app.use(express.static(path.join(__dirname, "../dist")));
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../dist", "index.html"));
+app.use(express.static(path.join(__dirname, "./dist")));
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./dist", "index.html"));
 });
 
 app.use(cors());
