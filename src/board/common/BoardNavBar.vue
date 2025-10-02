@@ -32,16 +32,11 @@
 </template>
 
 <script setup>
-import {useRouter} from "vue-router";
-const router = useRouter();
+import { useRouter } from 'vue-router'
+const router = useRouter()
 
-function goList(boardId){
-    router.push(`/board/${boardId}/list`);
+function goList(boardId) {
+  router.push({ name: 'BoardList', params: { boardId } })
 }
-
-
-// function goWrite(boardId){
-//     router.push(`/board/${boardId}/write`);
-// }
-
 </script>
+

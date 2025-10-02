@@ -2,6 +2,9 @@ import { createRouter, createWebHistory } from "vue-router";
 //import DefaultLayout from "@/layout/DefaultLayout.vue";
 import BoardWrite from "@/board/action/BoardWrite.vue";
 import BoardMain from "@/board/action/BoardMain.vue";
+import BoardView from "@/board/common/BoardView.vue";
+import BoardUpdate from "@/board/action/BoardUpdate.vue";
+import BoardDelete from "@/board/action/BoardDelete.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -23,6 +26,24 @@ const router = createRouter({
           component: BoardWrite,
            props: true
         },
+        {
+          path: "view/:id",         // /board/:boardId/write
+          name: "BoardView",
+          component: BoardView,
+           props: true
+        },
+        {
+          path: "update/:id",         // /board/:boardId/write
+          name: "BoardUpdate",
+          component: BoardUpdate,
+           props: true
+        },
+        {
+          path: "delete/:id",         // /board/:boardId/write
+          name: "BoardDelete",
+          component: BoardDelete,
+           props: true
+        }
       ],
     },
   ],
